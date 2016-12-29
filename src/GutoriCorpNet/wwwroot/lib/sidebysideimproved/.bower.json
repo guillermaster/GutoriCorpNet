@@ -1,0 +1,13 @@
+{
+  "name": "sidebysideimproved",
+  "homepage": "https://github.com/pkoltermann/sidebysideimproved",
+  "_release": "bb88962d5f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "bb88962d5f06ca6296d4ef409fbc1f4923739307"
+  },
+  "_source": "git://github.com/pkoltermann/sidebysideimproved.git",
+  "_target": "*",
+  "_originalSource": "pkoltermann/sidebysideimproved"
+}

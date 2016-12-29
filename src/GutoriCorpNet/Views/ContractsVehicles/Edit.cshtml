@@ -1,0 +1,73 @@
+@model GutoriCorp.Models.BusinessViewModels.ContractVehicleViewModel
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Contract - Vehicle Set Up</h4>
+            <small>Sets the vehicle to be used in a rental contract between two parties</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <button type="button" class="mt-sm btn btn-labeled btn-default ripple">All Contracts<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></button>
+        </div>
+    </div>
+</div>
+
+<div class="container container-lg">
+    <form asp-action="Edit" name="formSetContractVehicle" novalidate="" class="form-validate">
+        <div class="card">
+            <div class="card-heading">
+                <!-- START dropdown-->
+                <div class="pull-right dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default btn-flat btn-flat-icon"><em class="ion-android-more-vertical"></em></button>
+                    <ul role="menu" class="dropdown-menu md-dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </div>
+                <!-- END dropdown-->
+            </div>
+            <div class="card-body pt0">
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="contract_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DisplayTextFor(m => m.contract_id)
+                            @Html.HiddenFor(m => m.contract_id)
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="LessorName" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DisplayFor(model => model.LessorName)
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="lessee_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DisplayFor(model => model.LesseeName)
+                            @Html.HiddenFor(model => model.lessee_id)
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="vehicle_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.vehicle_id, Model.AvailableVehicles, new { @class = "form-control rounded" })
+                            <span asp-validation-for="vehicle_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="mb-sm btn btn-primary ripple">Save</button>
+                <button type="button" class="mb-sm btn btn-default ripple">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

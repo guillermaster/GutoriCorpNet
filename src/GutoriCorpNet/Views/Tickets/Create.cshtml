@@ -1,0 +1,125 @@
+@model GutoriCorp.Models.BusinessViewModels.TicketViewModel
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Ticket</h4>
+            <small>Adds a new ticket per vehicle</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <a href="Index" class="mt-sm btn btn-labeled btn-default ripple">All Tickets<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></a>
+        </div>
+    </div>
+</div>
+
+<div class="container container-lg">
+    <form asp-action="Create" name="formCreateContract" novalidate="" class="form-validate" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-heading">
+                <!-- START dropdown-->
+                <div class="pull-right dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default btn-flat btn-flat-icon"><em class="ion-android-more-vertical"></em></button>
+                    <ul role="menu" class="dropdown-menu md-dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </div>
+                <!-- END dropdown-->
+            </div>
+
+            <div class="card-body pt0">
+                
+                <h5 class="mt0">Ticket Information</h5>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="vehicle" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DisplayFor(model => model.vehicle_name)
+                            @Html.HiddenFor(model => model.vehicle_id)
+                            @Html.HiddenFor(model => model.tlc_plate)
+                            @Html.HiddenFor(model => model.vin_code)
+                            @Html.HiddenFor(model => model.refer_url)
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="ticket_num" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="ticket_num" type="text" class="form-control rounded" />
+                            <span asp-validation-for="ticket_num" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="ticket_date" class="col-md-1 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div id="example-datepicker-container-4" class="rel-wrapper ui-datepicker ui-datepicker-popup dp-theme-primary">
+                                <div class="mda-form-control">
+                                    <input asp-for="ticket_date" id="example-datepicker-4" type="text" data-date="12/13/2016" placeholder="Select a date.." class="form-control rounded" />
+                                    <div class="mda-form-control-line"></div>
+                                </div>
+                            </div>
+                            <span asp-validation-for="ticket_date" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="fine_amount" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="fine_amount" type="text" class="form-control" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="fine_amount" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="occurrence_place" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="occurrence_place" type="text" class="form-control rounded" />
+                            <span asp-validation-for="occurrence_place" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="description" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="description" type="text" class="form-control rounded" />
+                            <span asp-validation-for="description" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="ticket_file" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input type="file" name="ticket_file" />
+                        </div>
+                    </div>
+                </fieldset>
+
+            <div class="card-footer">
+                <button type="submit" class="mb-sm btn btn-primary ripple">Save</button>
+                <button type="button" class="mb-sm btn btn-default ripple">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

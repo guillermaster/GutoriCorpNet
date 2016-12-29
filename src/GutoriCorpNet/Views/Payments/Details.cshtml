@@ -1,0 +1,231 @@
+@model GutoriCorp.Models.BusinessViewModels.PaymentViewModel
+
+@{
+    var latePaymentYes = Model.late ? new { @checked = "checked", @disabled = "disabled" } : new { @checked = "", @disabled = "disabled" };
+    var latePaymentNo = Model.late ? new { @checked = "", @disabled = "disabled" } : new { @checked = "checked", @disabled = "disabled" };
+
+}
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Payment</h4>
+            <small>Adds a new payment per contract</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <a href="Index" class="mt-sm btn btn-labeled btn-default ripple">All Payments<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></a>
+        </div>
+    </div>
+</div>
+
+<div class="container container-lg">
+    <form asp-action="Edit" name="formCreateContract" novalidate="" class="form-validate">
+        <div class="card">
+            <div class="card-heading">
+                <!-- START dropdown-->
+                <div class="pull-right dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default btn-flat btn-flat-icon"><em class="ion-android-more-vertical"></em></button>
+                    <ul role="menu" class="dropdown-menu md-dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </div>
+                <!-- END dropdown-->
+            </div>
+
+            <div class="card-body pt0">
+                <div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="panel">
+                                    <div class="panel-heading">Contract</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label asp-for="contract_id" class="col-md-2 control-label"></label>
+                                            <div class="col-md-5 col-sm-8">
+                                                @Html.DisplayFor(model => model.contract_id)
+                                            </div>
+                                        </div><br />
+                                        <div class="form-group">
+                                            <label asp-for="lessor" class="col-md-2 control-label"></label>
+                                            <div class="col-md-5 col-sm-8">
+                                                @Html.DisplayFor(model => model.lessor)
+                                            </div>
+                                        </div><br />
+                                        <div class="form-group">
+                                            <label asp-for="lessee" class="col-md-2 control-label"></label>
+                                            <div class="col-md-5 col-sm-8">
+                                                @Html.DisplayFor(model => model.lessee)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="panel">
+                                    <div class="panel-heading">Vehicle</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label asp-for="tlc_plate" class="col-md-2 control-label"></label>
+                                            <div class="col-md-5 col-sm-8">
+                                                @Html.DisplayFor(model => model.tlc_plate)
+                                            </div>
+                                        </div><br />
+                                        <div class="form-group">
+                                            <label asp-for="vin_code" class="col-md-2 control-label"></label>
+                                            <div class="col-md-5 col-sm-8">
+                                                @Html.DisplayFor(model => model.vin_code)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <h5 class="mt0">Payment Information</h5>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="period" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DisplayFor(model => model.period)
+                            @Html.HiddenFor(model => model.contract_id)
+                            @Html.HiddenFor(model => model.late)
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="frequency" class="col-md-1 control-label"></label>
+                        <div class="col-md-2 col-sm-8">
+                            @Html.DisplayFor(model => model.frequency)
+                        </div>
+                        <label asp-for="due_date" class="col-md-2 control-label"></label>
+                        <div class="col-md-2 col-sm-8">
+                            @Html.DisplayFor(model => model.due_date)
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="late" class="col-md-1 control-label"></label>
+                        <div class="col-md-2 col-sm-8">
+                            @Html.RadioButtonFor(m => m.late, true, latePaymentYes) Yes
+                            @Html.RadioButtonFor(m => m.late, false, latePaymentNo) No
+                        </div>
+                        <label asp-for="tickets" class="col-md-1 control-label"></label>
+                        <div class="col-md-2 col-sm-8">
+                            @Html.RadioButtonFor(m => m.tickets, true, new { @disabled = "disabled" }) Yes
+                            @Html.RadioButtonFor(m => m.tickets, false, new { @disabled = "disabled" }) No
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="rental_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="rental_fee" type="text" class="form-control" readonly="readonly" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="rental_fee" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="late_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="late_fee" type="text" class="form-control" readonly="readonly" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="late_fee" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="tickets_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="tickets_fee" type="text" class="form-control" readonly="readonly" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="tickets_fee" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="previous_credit" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="previous_credit" type="text" class="form-control" readonly="readonly" /><span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="previous_balance" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="previous_balance" type="text" class="form-control" readonly="readonly" /><span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="total_due_amount" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="total_due_amount" type="text" class="form-control" readonly="readonly" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="total_due_amount" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="total_paid_amount" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="total_paid_amount" type="text" class="form-control" readonly="readonly" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="total_paid_amount" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="card-footer">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Payments", new { id = Model.contract_id })
+    
+</div>

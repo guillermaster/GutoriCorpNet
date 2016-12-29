@@ -1,0 +1,138 @@
+@model GutoriCorp.Models.BusinessViewModels.ContractViewModel
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Contract</h4><small>Contract display mode</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <button type="button" class="mt-sm btn btn-labeled btn-default ripple">All Contracts<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></button>
+        </div>
+    </div>
+</div>
+
+<div class="container container-lg">
+        <!-- Large card-->
+        <div class="card">
+            <div class="card-heading">
+                <!-- START dropdown-->
+                <div class="pull-right dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default btn-flat btn-flat-icon"><em class="ion-android-more-vertical"></em></button>
+                    <ul role="menu" class="dropdown-menu md-dropdown-menu dropdown-menu-right">
+                        <li><a href="../../Payments/Create/@Model.id">Add payment</a></li>
+                        <li><a href="../GetPdf/@Model.id">View PDF</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </div>
+                <!-- END dropdown-->
+            </div>
+            <div class="card-body pt0">
+                <h5 class="mt0">Basic Information</h5>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="lessor_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DisplayFor(model => model.lessor)
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="lessee_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DisplayFor(model => model.lessee)
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="contract_date" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.contract_date)
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h5 class="mt0">Contract Type</h5>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="contract_type_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.contract_type)
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="frequency_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.frequency)
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="late_fee_type_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.late_fee_type)
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h5 class="mt0">Fees</h5>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="rental_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                @Html.TextBoxFor(m => m.rental_fee, new { @readonly = "readonly", Class="form-control" })
+                            </div><br />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="late_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                @Html.TextBoxFor(m => m.late_fee, new { @readonly = "readonly", Class = "form-control" })
+                            </div><br />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="thirdparty_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                @Html.TextBoxFor(m => m.thirdparty_fee, new { @readonly = "readonly", Class = "form-control" })
+                            </div><br />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="accident_penalty_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                @Html.TextBoxFor(m => m.accident_penalty_fee, new { @readonly = "readonly", Class = "form-control" })
+                            </div><br />
+                        </div>
+                    </div>
+                </fieldset>
+                <input type="hidden" asp-for="created_by" />
+                <input type="hidden" asp-for="modified_by" />
+            </div>
+        </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

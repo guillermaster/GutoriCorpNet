@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "exports": {
+    "GutoriCorpNet.Common/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.2",
+      "compile": {
+        "bin/Debug/GutoriCorpNet.Common.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/GutoriCorpNet.Common.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/GutoriCorpNet.Common.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

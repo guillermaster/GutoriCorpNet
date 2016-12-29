@@ -1,0 +1,5 @@
+C:\Users\Guillermo\Documents\Visual Studio 2015\Projects\GutoriCorpNet\src\GutoriCorpNet.Common\bin\Debug\GutoriCorpNet.Common.dll
+C:\Users\Guillermo\Documents\Visual Studio 2015\Projects\GutoriCorpNet\src\GutoriCorpNet.Common\bin\Debug\GutoriCorpNet.Common.pdb
+C:\Users\Guillermo\Documents\Visual Studio 2015\Projects\GutoriCorpNet\src\GutoriCorpNet.Common\obj\Debug\GutoriCorpNet.Common.dll
+C:\Users\Guillermo\Documents\Visual Studio 2015\Projects\GutoriCorpNet\src\GutoriCorpNet.Common\obj\Debug\GutoriCorpNet.Common.pdb
+C:\Users\Guillermo\Documents\Visual Studio 2015\Projects\GutoriCorpNet\src\GutoriCorpNet.Common\obj\Debug\GutoriCorpNet.Common.csprojResolveAssemblyReference.cache

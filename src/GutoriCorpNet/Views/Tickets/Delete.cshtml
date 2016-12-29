@@ -1,0 +1,109 @@
+@model GutoriCorp.Data.Models.Ticket
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.created_by)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.created_by)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.created_on)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.created_on)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fine_amount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fine_amount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.modified_by)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.modified_by)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.modified_on)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.modified_on)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.occurrence_place)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.occurrence_place)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.status_id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ticket)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ticket)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ticket_date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ticket_date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ticket_num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ticket_num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tlc_plate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tlc_plate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.vin_code)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.vin_code)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

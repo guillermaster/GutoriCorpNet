@@ -1,0 +1,210 @@
+@model GutoriCorp.Models.BusinessViewModels.VehicleViewModel
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Vehicle</h4>
+            <small>Set up vehicle information</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <a href="Index" class="mt-sm btn btn-labeled btn-default ripple">All Vehicles<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></a>
+        </div>
+    </div>
+</div>
+
+<div class="container container-lg">
+    <form asp-action="Create" name="formCreateVehicle" novalidate="" class="form-validate">
+        <div class="card">
+            <div class="card-heading">
+                <!-- START dropdown-->
+                <div class="pull-right dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default btn-flat btn-flat-icon"><em class="ion-android-more-vertical"></em></button>
+                    <ul role="menu" class="dropdown-menu md-dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </div>
+                <!-- END dropdown-->
+            </div>
+            <div class="card-body pt0">
+                <h5 class="mt0">Make Information</h5>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="date_issued" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8" style="margin-top: -30px">
+                            <div id="example-datepicker-container-4" class="rel-wrapper ui-datepicker ui-datepicker-popup dp-theme-primary">
+                                <div class="mda-form-control">
+                                    <input asp-for="date_issued" id="example-datepicker-4" type="text" data-date="12/13/2016" placeholder="Select a date.." class="form-control rounded" />
+                                    <div class="mda-form-control-line"></div>
+                                </div>
+                            </div>
+                            <span asp-validation-for="date_issued" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="owner_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.owner_id, Model.Owners, new { @class = "form-control rounded" })
+                            <span asp-validation-for="owner_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="tlc_plate" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="tlc_plate" type="text" class="form-control rounded" />
+                            <span asp-validation-for="tlc_plate" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="document_num" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="document_num" type="text" class="form-control rounded" />
+                            <span asp-validation-for="document_num" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="type_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.type_id, Model.Types, new { @class = "form-control rounded" })
+                            <span asp-validation-for="type_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="make_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.make_id, Model.Makes, "- Please select a make -", new { @class = "form-control rounded" })
+                            <span asp-validation-for="make_id" class="text-danger"/>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="model_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.model_id, Model.Models, "- Please select a model -", new { @class = "form-control rounded" })
+                            <span asp-validation-for="model_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="year" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.year, Model.Years, "- Please select a year -", new { @class = "form-control rounded" })
+                            <span asp-validation-for="year" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="body_hull_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.body_hull_id, Model.BodyHulls, new { @class = "form-control rounded" })
+                            <span asp-validation-for="body_hull_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="color_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.color_id, Model.Colors, new { @class = "form-control rounded" })
+                            <span asp-validation-for="color_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="fuel_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.fuel_id, Model.Fuels, new { @class = "form-control rounded" })
+                            <span asp-validation-for="fuel_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>                
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="wt_sts_lgth" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="wt_sts_lgth" type="text" class="form-control rounded" />
+                            <span asp-validation-for="wt_sts_lgth" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="seats" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="seats" type="text" class="form-control rounded" />
+                            <span asp-validation-for="seats" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="cyl_prop" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="cyl_prop" type="text" class="form-control rounded" />
+                            <span asp-validation-for="cyl_prop" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="vin_code" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <input asp-for="vin_code" type="text" class="form-control rounded" />
+                            <span asp-validation-for="vin_code" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="is_new" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="checkbox c-checkbox">
+                                <label>
+                                    <input asp-for="is_new" type="checkbox" value="true" /><span class="ion-checkmark-round"></span> Check if vehicle is new
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="mb-sm btn btn-primary ripple">Save</button>
+                <button type="button" class="mb-sm btn btn-default ripple">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $('#make_id').change(function () {
+        var selectedMakeId = $(this).val();
+        console.log("test " + selectedMakeId);
+        if (selectedMakeId != null && selectedMakeId != '') {
+            $.getJSON('@Url.Action("Models")', { year: selectedMakeId }, function (models) {
+                var modelsSelect = $('#model_id');
+                modelsSelect.empty();
+                $.each(models, function (index, model) {
+                    modelsSelect.append($('<option/>', {
+                        value: model.value,
+                        text: model.text
+                    }));
+                });
+            });
+        }
+    });
+</script>

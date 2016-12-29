@@ -1,0 +1,109 @@
+@model GutoriCorp.Models.BusinessViewModels.TicketViewModel
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Ticket</h4>
+            <small>Ticket details</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <a href="Index" class="mt-sm btn btn-labeled btn-default ripple">All Tickets<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></a>
+        </div>
+    </div>
+</div>
+
+<div class="container container-lg">
+    <div class="card">
+        <div class="card-heading">
+            <!-- START dropdown-->
+            <div class="pull-right dropdown">
+                <button type="button" data-toggle="dropdown" class="btn btn-default btn-flat btn-flat-icon"><em class="ion-android-more-vertical"></em></button>
+                <ul role="menu" class="dropdown-menu md-dropdown-menu dropdown-menu-right">
+                    <li><a href="#">Option 1</a></li>
+                    <li><a href="#">Option 2</a></li>
+                    <li><a href="#">Option 3</a></li>
+                </ul>
+            </div>
+            <!-- END dropdown-->
+        </div>
+
+        <div class="card-body pt0">
+
+            <h5 class="mt0">Ticket Information</h5>
+
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="vehicle" class="col-md-2 control-label"></label>
+                    <div class="col-md-5 col-sm-8">
+                        @Html.DisplayFor(model => model.vehicle_name)
+                        @Html.HiddenFor(model => model.vehicle_id)
+                        @Html.HiddenFor(model => model.tlc_plate)
+                        @Html.HiddenFor(model => model.vin_code)
+                        @Html.HiddenFor(model => model.refer_url)
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="ticket_num" class="col-md-2 control-label"></label>
+                    <div class="col-md-5 col-sm-8">
+                        @Html.DisplayFor(model => model.ticket_num)
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="ticket_date" class="col-md-1 control-label"></label>
+                    <div class="col-md-5 col-sm-8">
+                        @Html.DisplayFor(model => model.ticket_date)
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="fine_amount" class="col-md-2 control-label"></label>
+                    <div class="col-md-5 col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            @Html.DisplayFor(model => model.fine_amount)
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="occurrence_place" class="col-md-2 control-label"></label>
+                    <div class="col-md-5 col-sm-8">
+                        @Html.DisplayFor(model => model.occurrence_place)
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="description" class="col-md-2 control-label"></label>
+                    <div class="col-md-5 col-sm-8">
+                        @Html.DisplayFor(model => model.description)
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="ticket_file" class="col-md-2 control-label"></label>
+                    <div class="col-md-5 col-sm-8">
+                        <a href="../DownloadTicketFile/@Model.id">Download</a>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

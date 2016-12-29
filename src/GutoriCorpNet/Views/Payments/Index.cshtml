@@ -1,0 +1,94 @@
+@model IEnumerable<GutoriCorp.Models.BusinessViewModels.PaymentViewModel>
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Payments</h4><small>Find, edit and create contract payments</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <a href="Create" class="mt-sm btn btn-labeled btn-default ripple">New Payment<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <!-- DATATABLE DEMO 1-->
+    <div class="card">
+        <div class="card-heading">Payments for Contract ID </div>
+        <div class="card-body">
+            <table id="datatable1" class="table-datatable table table-striped table-hover mv-lg">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.period)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.due_date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.payment_date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.late)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tickets)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.total_due_amount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.total_paid_amount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.balance)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.credit)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.period)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.due_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.payment_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tickets)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tickets)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.total_due_amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.total_paid_amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.balance)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.credit)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", "Payments", new { id = item.id, cid = item.contract_id })  |
+                                @Html.ActionLink("Details", "Details", "Payments", new { id = item.id, cid = item.contract_id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+@model IEnumerable<GutoriCorp.Models.BusinessViewModels.VehicleViewModel>
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Vehicles</h4><small>Find, edit and create vehicles</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <a href="Create" class="mt-sm btn btn-labeled btn-default ripple">New Vehicle<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <!-- DATATABLE DEMO 1-->
+    <div class="card">
+        <div class="card-heading">Vehicles</div>
+        <div class="card-body">
+            <table id="datatable1" class="table-datatable table table-striped table-hover mv-lg">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tlc_plate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.vin_code)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.make_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.model_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.year)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.owner_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.driver_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.status_id)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tlc_plate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vin_code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.make)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.model)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.year)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.owner)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.driver)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.status)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,188 @@
+@model GutoriCorp.Models.BusinessViewModels.ContractViewModel
+
+<div class="content-heading bg-white">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 class="m0 text-thin">Edit Contract</h4><small>Contract edition mode</small>
+        </div>
+        <div class="col-sm-3 text-right hidden-xs">
+            <button type="button" class="mt-sm btn btn-labeled btn-default ripple">All Contracts<span class="btn-label btn-label-right"><i class="ion-plus-round"></i></span></button>
+        </div>
+    </div>
+</div>
+
+<div class="container container-lg">
+    <form asp-action="Edit" name="formEditContract" novalidate="" class="form-validate">
+
+        <!-- Large card-->
+        <div class="card">
+            <div class="card-heading">
+                <!-- START dropdown-->
+                <div class="pull-right dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default btn-flat btn-flat-icon"><em class="ion-android-more-vertical"></em></button>
+                    <ul role="menu" class="dropdown-menu md-dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </div>
+                <!-- END dropdown-->
+            </div>
+            <div class="card-body pt0">
+                <h5 class="mt0">Basic Information</h5>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="lessor_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.lessor_id, Model.Owners, "- Please select a lessor -", new { @class = "form-control rounded" })
+                            <span asp-validation-for="lessor_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="lessee_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8">
+                            @Html.DropDownListFor(m => m.lessee_id, Model.Drivers, "- Please select a lessee -", new { @class = "form-control rounded" })
+                            <span asp-validation-for="lessee_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="contract_date" class="col-md-2 control-label"></label>
+                        <div class="col-md-5 col-sm-8" style="margin-top: -30px">
+                            <div id="example-datepicker-container-4" class="rel-wrapper ui-datepicker ui-datepicker-popup dp-theme-primary">
+                                <div class="mda-form-control">
+                                    <input asp-for="contract_date" id="example-datepicker-4" type="text" data-date="12/13/2016" placeholder="Select a date.." class="form-control rounded" />
+                                    <div class="mda-form-control-line"></div>
+                                </div>
+                            </div>
+                            <span asp-validation-for="contract_date" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h5 class="mt0">Contract Type</h5>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="contract_type_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.contract_type_id, Model.ContractTypes, "- Please select a contract type -", new { @class = "form-control rounded" })
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="frequency_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.frequency_id, Model.ContractFrequencies, "- Please select a frequency -", new { @class = "form-control rounded" })
+                            <span asp-validation-for="frequency_id" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="late_fee_type_id" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.late_fee_type_id, Model.ContractLateFeeTypes, "- Please select a late fee type -", new { @class = "form-control rounded" })
+                            <span asp-validation-for="late_fee_type" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h5 class="mt0">Fees</h5>
+                <fieldset id="fsDueDay">
+                    <div class="form-group">
+                        <label asp-for="due_day" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="due_day" type="number" class="form-control" min="1" max="7" />
+                            <br />
+                            <span class="text-danger" id="weekdays_help">{1=Monday, 2=Tuesday, ...., 7=Sunday}</span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="rental_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="rental_fee" type="text" class="form-control" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="rental_fee" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="late_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="late_fee" type="text" class="form-control" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="late_fee" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="thirdparty_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="thirdparty_fee" type="text" class="form-control" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="thirdparty_fee" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="accident_penalty_fee" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input asp-for="accident_penalty_fee" type="text" class="form-control" /><span class="input-group-addon">.00</span>
+                            </div><br />
+                            <span asp-validation-for="accident_penalty_fee" class="text-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+                <input type="hidden" asp-for="created_by" />
+                <input type="hidden" asp-for="modified_by" />
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="mb-sm btn btn-primary ripple">Save</button>
+                <button type="button" class="mb-sm btn btn-default ripple">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script type="text/javascript">
+    $('#frequency_id').change(function () {
+        var value = $(this).val();
+        if (value !== '') {
+            $('#fsDueDay').show();
+            var dueDayCtrl = document.getElementById("due_day");
+            if (value === '5') {
+                dueDayCtrl.setAttribute("max", "7");
+                $('#weekdays_help').show();
+            } else {
+                dueDayCtrl.setAttribute("max", "30");
+                $('#weekdays_help').hide();
+            }
+        } else {
+            $('#fsDueDay').hide();
+        }
+    });
+</script>

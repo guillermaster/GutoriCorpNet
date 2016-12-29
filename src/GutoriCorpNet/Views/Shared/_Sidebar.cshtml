@@ -1,0 +1,44 @@
+﻿<div class="sidebar-header">
+    <div class="pull-right pt-lg text-muted hidden"><em class="ion-close-round"></em></div><a href="#" class="sidebar-header-logo">
+        <img src="~/images/logo.png" data-svg-replace="/images/logo.svg" alt="Logo"><span class="sidebar-header-logo-text">GutoriCorp</span>
+    </a>
+</div>
+<div class="sidebar-content">
+    <div class="sidebar-toolbar text-center">
+        <a href=""><img src="~/images/user/01.jpg" alt="Profile" class="img-circle thumb64"></a>
+        <div class="mt">Welcome, Jorge Peralta</div>
+    </div>
+    <nav class="sidebar-nav">
+        <ul>
+            <li class="@Html.isActive(controller: "Dashboard")">
+                <a href="@Url.Action("Dashboard", "Dashboard")" class="ripple">
+                    <span class="pull-right nav-label">
+                        <span class="badge bg-success">2</span>
+                    </span>
+                    <span class="nav-icon">
+                        <img src="" data-svg-replace="/images/icons/aperture.svg" alt="MenuItem" class="hidden">
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="@Html.isActive(controller: "Contracts")">
+                <a href="@Url.Action("Index", "Contracts")" class="ripple">
+                    <span class="pull-right nav-label"></span><span class="nav-icon">
+                        <img src="" data-svg-replace="/images/icons/radio-waves.svg" alt="MenuItem" class="hidden">
+                    </span>
+                    <span>Contracts</span>
+                </a>
+            </li>
+            <li class="@Html.isActive(controller: "Vehicles")">
+                <a href="@Url.Action("Index", "Vehicles")" class="ripple">
+                    <span class="pull-right nav-label"></span><span class="nav-icon">
+                        <img src="" data-svg-replace="/images/icons/radio-waves.svg" alt="MenuItem" class="hidden">
+                    </span>
+                    <span>Vehicles</span>
+                </a>
+            </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>

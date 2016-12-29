@@ -1,0 +1,126 @@
+@model GutoriCorp.Data.Models.Ticket
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Ticket</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="id" />
+        <div class="form-group">
+            <label asp-for="created_by" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="created_by" class="form-control" />
+                <span asp-validation-for="created_by" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="created_on" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="created_on" class="form-control" />
+                <span asp-validation-for="created_on" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="fine_amount" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="fine_amount" class="form-control" />
+                <span asp-validation-for="fine_amount" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="modified_by" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="modified_by" class="form-control" />
+                <span asp-validation-for="modified_by" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="modified_on" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="modified_on" class="form-control" />
+                <span asp-validation-for="modified_on" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="occurrence_place" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="occurrence_place" class="form-control" />
+                <span asp-validation-for="occurrence_place" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="status_id" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="status_id" class="form-control" />
+                <span asp-validation-for="status_id" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ticket" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ticket" class="form-control" />
+                <span asp-validation-for="ticket" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ticket_date" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ticket_date" class="form-control" />
+                <span asp-validation-for="ticket_date" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ticket_num" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ticket_num" class="form-control" />
+                <span asp-validation-for="ticket_num" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="tlc_plate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="tlc_plate" class="form-control" />
+                <span asp-validation-for="tlc_plate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="vin_code" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="vin_code" class="form-control" />
+                <span asp-validation-for="vin_code" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
