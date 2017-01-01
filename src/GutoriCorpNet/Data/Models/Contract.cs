@@ -17,6 +17,8 @@ namespace GutoriCorp.Data.Models
         [Column(TypeName = "date")]
         public DateTime contract_date { get; set; }
 
+        public short? contract_length_months { get; set; }
+
         public short? frequency_id { get; set; }
 
         public decimal? rental_fee { get; set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using GutoriCorpNet.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,7 +29,7 @@ namespace GutoriCorp.Models.BusinessViewModels
         [Required]
         [Display(Name="Type")]
         public short contract_type_id { get; set; }
-        
+                
         [Display(Name = "Type")]
         public string contract_type { get; set; }
 
@@ -36,6 +37,18 @@ namespace GutoriCorp.Models.BusinessViewModels
         [Display(Name = "Contract Date")]
         [Column(TypeName = "date")]
         public DateTime contract_date { get; set; }
+
+        public short? contract_length_months { get; set; }
+
+        public string contract_length_years
+        {
+            get
+            {
+                var years = Math.Round((decimal)((int)contract_length_months / 12), 2);
+                string months = FractionConverter.Convert((decimal)(contract_length_months % 12) / 12);
+                return years + " " + months;
+            }
+        }
         
         [Display(Name = "Frecuency")]
         public short? frequency_id { get; set; }
