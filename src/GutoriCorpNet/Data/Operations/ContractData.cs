@@ -57,14 +57,14 @@ namespace GutoriCorp.Data.Operations
         }
 
        
-        public ContractViewModel Get(long? id)
+        public ContractViewModel Get(long? id, bool extendedInfo = false)
         {
             if (id == null)
             {
                 throw new KeyNotFoundException();
             }
 
-            var contractsQry = QueryAllData();
+            var contractsQry = !extendedInfo ? QueryAllData() : QueryAllDataExtended();
 
             contractsQry = contractsQry.Where(c => c.id == id);
 
@@ -79,13 +79,67 @@ namespace GutoriCorp.Data.Operations
         private IQueryable<ContractViewModel> QueryAllData()
         {
             var contractsQry = from cont in _context.Contract
-                               join own in _context.Owner on cont.lessor_id equals own.id
-                               join driv in _context.Driver on cont.lessee_id equals driv.id
+                                join own in _context.Owner on cont.lessor_id equals own.id
+                                join driv in _context.Driver on cont.lessee_id equals driv.id
+                                join contType in _context.GeneralCatalogValues on cont.contract_type_id equals contType.id
+                                join lateFeeType in _context.GeneralCatalogValues on cont.late_fee_type_id equals lateFeeType.id
+                                join frec in _context.GeneralCatalogValues on cont.frequency_id equals frec.id
+                                join stat in _context.GeneralCatalogValues on cont.status_id equals stat.id
+                                select new ContractViewModel
+                                {
+                                    id = cont.id,
+                                    lessor_id = cont.lessor_id,
+                                    lessor = own.ToString(),
+                                    lessee_id = cont.lessee_id,
+                                    lessee = driv.ToString(),
+                                    contract_type_id = cont.contract_type_id,
+                                    contract_type = contType.title,
+                                    frequency_id = cont.frequency_id,
+                                    frequency = frec.title,
+                                    contract_date = cont.contract_date,
+                                    due_day = cont.due_day,
+                                    rental_fee = cont.rental_fee,
+                                    late_fee_type_id = cont.late_fee_type_id,
+                                    late_fee_type = lateFeeType.title,
+                                    late_fee = cont.late_fee,
+                                    thirdparty_fee = cont.thirdparty_fee,
+                                    accident_penalty_fee = cont.accident_penalty_fee,
+                                    deposit = cont.deposit,
+                                    status_id = cont.status_id,
+                                    status = stat.title,
+                                    created_on = cont.created_on,
+                                    created_by = cont.created_by,
+                                    modified_on = cont.modified_on,
+                                    modified_by = cont.modified_by,
+                                    vehicle_id = cont.vehicle_id
+                                };
+            return contractsQry;
+        }
+
+        private IQueryable<ContractExtendedViewModel> QueryAllDataExtended()
+        {
+            var contractsQry = from cont in _context.Contract
                                join contType in _context.GeneralCatalogValues on cont.contract_type_id equals contType.id
                                join lateFeeType in _context.GeneralCatalogValues on cont.late_fee_type_id equals lateFeeType.id
                                join frec in _context.GeneralCatalogValues on cont.frequency_id equals frec.id
                                join stat in _context.GeneralCatalogValues on cont.status_id equals stat.id
-                               select new ContractViewModel
+                               join own in _context.Owner on cont.lessor_id equals own.id
+                               join driv in _context.Driver on cont.lessee_id equals driv.id
+
+                               join veh in _context.Vehicle on cont.vehicle_id equals veh.id
+                               join make in _context.VehicleMake on veh.make_id equals make.id
+                               join model in _context.VehicleMakeModel on veh.model_id equals model.id
+                               join color in _context.GeneralCatalogValues on veh.color_id equals color.id
+
+                               join dLic in _context.DriverLicense.Where(dl => dl.license_type_id == (short)Enums.DriverLicenseType.DriverLicense)
+                                on driv.id equals dLic.driver_id into DrivLicense
+                               from drivLic in DrivLicense.DefaultIfEmpty()
+
+                               join tLic in _context.DriverLicense.Where(tl => tl.license_type_id == (short)Enums.DriverLicenseType.TlcLicense)
+                                on driv.id equals tLic.driver_id into TlcLicense
+                               from tlcLic in TlcLicense.DefaultIfEmpty()
+
+                               select new ContractExtendedViewModel
                                {
                                    id = cont.id,
                                    lessor_id = cont.lessor_id,
@@ -104,13 +158,60 @@ namespace GutoriCorp.Data.Operations
                                    late_fee = cont.late_fee,
                                    thirdparty_fee = cont.thirdparty_fee,
                                    accident_penalty_fee = cont.accident_penalty_fee,
+                                   deposit = cont.deposit,
                                    status_id = cont.status_id,
                                    status = stat.title,
                                    created_on = cont.created_on,
                                    created_by = cont.created_by,
                                    modified_on = cont.modified_on,
                                    modified_by = cont.modified_by,
-                                   vehicle_id = cont.vehicle_id
+                                   vehicle_id = cont.vehicle_id,
+                                   Lessor = new OwnerViewModel
+                                   {
+                                       first_name = own.first_name,
+                                       last_name = own.last_name,
+                                       phone = own.phone,
+                                       address = own.address,
+                                       address2 = own.address2,
+                                       email = own.email
+                                   },
+                                   Lessee = new DriverViewModel
+                                   {
+                                       first_name = driv.first_name,
+                                       last_name = driv.last_name,
+                                       phone = driv.phone,
+                                       address = driv.address,
+                                       address2 = driv.address2,
+                                       email = driv.email
+                                   },
+                                   DriverLicense = drivLic == null ? new DriverLicenseViewModel () :
+                                    new DriverLicenseViewModel
+                                    {
+                                        id = drivLic.id,
+                                        driver_id = drivLic.driver_id,
+                                        number = drivLic.number,
+                                        expire_date = drivLic.expire_date
+                                    },
+                                   TlcLicense = tlcLic == null ? new DriverLicenseViewModel() :
+                                    new DriverLicenseViewModel
+                                    {
+                                        id = tlcLic.id,
+                                        driver_id = tlcLic.driver_id,
+                                        number = tlcLic.number,
+                                        expire_date = tlcLic.expire_date
+                                    },
+                                   Vehicle = new VehicleViewModel
+                                   {
+                                       vin_code = veh.vin_code,
+                                       year = veh.year,
+                                       make_id = veh.make_id,
+                                       make = make.name,
+                                       model_id = veh.model_id,
+                                       model = model.name,
+                                       color_id = veh.color_id,
+                                       color = color.title,
+                                       tlc_plate = veh.tlc_plate                                       
+                                   }
                                };
             return contractsQry;
         }
@@ -129,6 +230,7 @@ namespace GutoriCorp.Data.Operations
                 late_fee = contractVm.late_fee,
                 thirdparty_fee = contractVm.thirdparty_fee,
                 accident_penalty_fee = contractVm.accident_penalty_fee,
+                deposit = contractVm.deposit,
                 due_day = contractVm.due_day,
                 created_on = DateTime.Now,
                 created_by = contractVm.created_by,
@@ -154,6 +256,7 @@ namespace GutoriCorp.Data.Operations
                 late_fee = contract.late_fee,
                 thirdparty_fee = contract.thirdparty_fee,
                 accident_penalty_fee = contract.accident_penalty_fee,
+                deposit = contract.deposit,
                 created_on = DateTime.Now,
                 created_by = contract.created_by,
                 modified_on = DateTime.Now,

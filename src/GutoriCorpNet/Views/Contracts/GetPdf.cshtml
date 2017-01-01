@@ -1,336 +1,342 @@
-﻿@model GutoriCorp.Models.BusinessViewModels.ContractViewModel
+﻿@model GutoriCorp.Models.BusinessViewModels.ContractExtendedViewModel
 <html>
 <head>
     <title>test</title>
+    <style>
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
-    <h1>Lease Agreement</h1>
-    <table>
-        <tr>
-            <td>1.</td>
-            <td>Lessor:</td>
-            <td>@Model.lessor</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>address</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>phone</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>email</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td>Lessee:</td>
-            <td>@Model.lessee</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>address</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>phone</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>email</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    </table>
-    
-    <br />
+    <div style="padding: 0 20px">
+        <h1>LEASE AGREEMENT</h1>
+        <table>
+            <tr>
+                <td>1.</td>
+                <td>Lessor:</td>
+                <td>@Model.lessor</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Model.Lessor.address @Model.Lessor.address2</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Model.Lessor.phone</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Model.Lessor.email</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Lessee:</td>
+                <td>@Model.lessee</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Model.Lessee.address @Model.Lessee.address2</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Model.Lessee.phone</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Model.Lessee.email</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
 
-    <table>
-        <tr>
-            <td>Driver License:</td>
-            <td># num</td>
-            <td>&nbsp;</td>
-            <td>Expires:</td>
-            <td>exp date</td>
-        </tr>
-        <tr>
-            <td>TLC License:</td>
-            <td># num</td>
-            <td>&nbsp;</td>
-            <td>Expires:</td>
-            <td>exp date</td>
-        </tr>
-        <tr>
-            <td>Vehicle:</td>
-            <td># num</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Year/Make/Model/Color:</td>
-            <td>car</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Year/Make/Model/Color:</td>
-            <td>car</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>VIN:</td>
-            <td># num</td>
-            <td>&nbsp;</td>
-            <td>License plate:</td>
-            <td># num</td>
-        </tr>
-    </table>
+        <br />
 
-    <br />
+        <table>
+            <tr>
+                <td>Driver License:</td>
+                <td># @Model.DriverLicense.number</td>
+                <td>&nbsp;</td>
+                <td>Expires:</td>
+                <td>@Model.DriverLicense.expire_date</td>
+            </tr>
+            <tr>
+                <td>TLC License:</td>
+                <td># @Model.TlcLicense.number</td>
+                <td>&nbsp;</td>
+                <td>Expires:</td>
+                <td>@Model.TlcLicense.expire_date</td>
+            </tr>
+            <tr>
+                <td>Vehicle:</td>
+                <td># @Model.vehicle_id</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Year/Make/Model/Color:</td>
+                <td>@Model.Vehicle.ToString()</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>VIN:</td>
+                <td># @Model.Vehicle.vin_code</td>
+                <td>&nbsp;</td>
+                <td>License plate:</td>
+                <td># @Model.Vehicle.tlc_plate</td>
+            </tr>
+        </table>
 
-    <p>
-        <strong>Term-</strong> Lease Commencement @Model.contract_date $500.00 Deposit Lease 
-        Payments: $390.00/Week for 2 1/2 years, then $1.00 buyout to own plus taxes and other expenses. 
-        Includes: insurance, registration, TLC plates/diamond and maintenance. 
-        (all subject to general price increases or driver specific increases). 
-        30 days notice cancellation.
-    </p>
+        <br />
 
-    <p>
-        2. Lessee acknowledges that Lessee is in no way an employee, contractor, representative, agent or partner 
-        of Lessor. The only relationship between Lessee and Lessor is as set forth in this Lease Agreement 
-        pertaining to the leasing of the vehicle by Lessor to Lessee.
-    </p>
+        <p>
+            <strong>Term-</strong> Lease Commencement @Model.contract_date $@Model.deposit Deposit 
+            <span style="text-decoration: underline">Lease Payments:</span> 
+            $390.00/@(Model.frequency_id == (short)GutoriCorpNet.Common.Enums.PaymentFrequency.Weekly ? "Week" : "Month" ) 
+            for 2 1/2 years, then $1.00 buyout to own plus taxes and other expenses.
+            <span style="text-decoration: underline">Includes:</span> insurance, registration, TLC plates/diamond and maintenance.
+                (all subject to general price increases or driver specific increases).
+                30 days notice cancellation.
+</p>
 
-    <p>
-        3. Other than as specifically set forth in this Lessee Agreement, Lessee shall be responsible for all costs 
-        and expenses associated with the vehicle during the Term, including but not limited to (i) tickets, (ii) 
-        citations, (iii) violations and (iv) necessary or required inspections (which shall take place no less than 
-        every four (4) months during the Term), Warranty on transmission and engine only.
-    </p>
+        <p>
+            2. Lessee acknowledges that Lessee is in no way an employee, contractor, representative, agent or partner
+            of Lessor. The only relationship between Lessee and Lessor is as set forth in this Lease Agreement
+            pertaining to the leasing of the vehicle by Lessor to Lessee.
+        </p>
 
-    <p>
-        4. Lessor shall be responsible to maintain insurance policies for the vehicle and to maintain proper 
-        registration for the Vehicle. (including TLC plates and diamond)
-    </p>
+        <p>
+            3. Other than as specifically set forth in this Lessee Agreement, Lessee shall be responsible for all costs
+            and expenses associated with the vehicle during the Term, including but not limited to (i) tickets, (ii)
+            citations, (iii) violations and (iv) necessary or required inspections (which shall take place no less than
+            every four (4) months during the Term), Warranty on transmission and engine only.
+        </p>
 
-    <p>
-        5. No person, other than Lessee, shall be permitted to operate the Vehicle during the <strong>Term</strong>, 
-        without the prior written consent of Lessor in each instance. Failure to comply with this Section shall result 
-        in immediate termination of this Lease Agreement.
-    </p>
+        <p>
+            4. Lessor shall be responsible to maintain insurance policies for the vehicle and to maintain proper
+            registration for the Vehicle. (including TLC plates and diamond)
+        </p>
 
-    <p>
-        6. Lessee agrees to indemnify, defend and hold harmless Lessor and its shareholders, directors employees 
-        and agents, from any and all third party claims, actions, demands, judgments, losses, costs, expenses, 
-        damages and liabilities (including but not limited to reasonable attorneys’ fees and other expenses of 
-        litigation)(collectively, “Losses”) to the extend such Losses result from any breach of any provision of 
-        this Lease Agreement by Lessee. 
-    </p>
+        <p>
+            5. No person, other than Lessee, shall be permitted to operate the Vehicle during the <strong>Term</strong>,
+            without the prior written consent of Lessor in each instance. Failure to comply with this Section shall result
+            in immediate termination of this Lease Agreement.
+        </p>
 
-    <p>
-        7. Provided Lessee is in compliance with all provisions of this Lease Agreement and no amounts are then 
-        due and owing by Lessee to Lessor, upon the Lease Expiration Lessee shall have the option to purchase the 
-        vehicle from Lessor for the purchase price of $1.00.
-        Option shall be exercised within three (3) days of the Lease Expiration.
-    </p>
+        <p>
+            6. Lessee agrees to indemnify, defend and hold harmless Lessor and its shareholders, directors employees
+            and agents, from any and all third party claims, actions, demands, judgments, losses, costs, expenses,
+            damages and liabilities (including but not limited to reasonable attorneys’ fees and other expenses of
+            litigation)(collectively, “Losses”) to the extend such Losses result from any breach of any provision of
+            this Lease Agreement by Lessee.
+        </p>
 
-    <p>
-        8. Lessee will not, or permit others to do any of the following:
-    </p>
+        <p>
+            7. Provided Lessee is in compliance with all provisions of this Lease Agreement and no amounts are then
+            due and owing by Lessee to Lessor, upon the Lease Expiration Lessee shall have the option to purchase the
+            vehicle from Lessor for the purchase price of $1.00.
+            Option shall be exercised within three (3) days of the Lease Expiration.
+        </p>
 
-    <p>
-        A.	Use the Vehicle in any illegal manner, in violation of any insurance policy maintained on the Vehicle;<br />
-        B.	Alter the Vehicle without Lessor’s written consent;<br />
-        C.	Subject the Vehicle to any lien, seizure or other involuntary transfer;<br />
-        D.	Remove the Vehicle from the state where it was first titled, for more than seven (7) days, without Lessor’s prior written consent;<br />
-        E.	Take the Vehicle outside the United States
-    </p>
+        <p>
+            8. Lessee will not, or permit others to do any of the following:
+        </p>
 
-    <p>
-        9. Assignment or subleasing by Lessee of the Vehicle or this Lease is strictly prohibited.
-    </p>
+        <p>
+            A.	Use the Vehicle in any illegal manner, in violation of any insurance policy maintained on the Vehicle;<br />
+            B.	Alter the Vehicle without Lessor’s written consent;<br />
+            C.	Subject the Vehicle to any lien, seizure or other involuntary transfer;<br />
+            D.	Remove the Vehicle from the state where it was first titled, for more than seven (7) days, without Lessor’s prior written consent;<br />
+            E.	Take the Vehicle outside the United States
+        </p>
 
-    <p>
-        10.  If Lessor does not receive any weekly Lease Payment within three (3) days after it is due, 
-        Lessee must pay late payment charge of five (5%) percent of the unpaid amount.
-    </p>
+        <p>
+            9. Assignment or subleasing by Lessee of the Vehicle or this Lease is strictly prohibited.
+        </p>
 
-    <p>
-        11. Lessee may not charge or stop the weekly Lease Payments for any reason, even if the Vehicle is stolen, 
-        destroyed, seized by the government, non-operable, experiences any mechanical problem, or does not perform 
-        satisfactorily.
-    </p>
+        <p>
+            10.  If Lessor does not receive any weekly Lease Payment within three (3) days after it is due,
+            Lessee must pay late payment charge of five (5%) percent of the unpaid amount.
+        </p>
 
-    <p>
-        12. Lessee must notify Lessor within ten (10) days of any change in Lessee’s address.
-    </p>
+        <p>
+            11. Lessee may not charge or stop the weekly Lease Payments for any reason, even if the Vehicle is stolen,
+            destroyed, seized by the government, non-operable, experiences any mechanical problem, or does not perform
+            satisfactorily.
+        </p>
 
-    <p>
-        13.  Lessee must also promptly pay any fines incurred on the Vehicle such as traffic or parking tickets.
-    </p>
+        <p>
+            12. Lessee must notify Lessor within ten (10) days of any change in Lessee’s address.
+        </p>
 
-    <p>
-        14. A default shall occur if Lessee:
-    </p>
+        <p>
+            13.  Lessee must also promptly pay any fines incurred on the Vehicle such as traffic or parking tickets.
+        </p>
 
-    <p>
-        A.	fails to make any payment when such payment is due;<br />
-        B.	fails to perform in accordance with any other provision of this Lease Agreement;<br />
-        C.	provides any false, incorrect or misleading information with respect to this Lease Agreement;<br />
-        D.	becomes the subject of a bankruptcy or insolvency proceeding; or<br />
-        E.	the Vehicle is lost, stolen, seized, or damaged beyond reasonably repair.
-    </p>
+        <p>
+            14. A default shall occur if Lessee:
+        </p>
 
-    <p>
-        15. If Lessee is in default Lessor may do any of the following:
-    </p>
+        <p>
+            A.	fails to make any payment when such payment is due;<br />
+            B.	fails to perform in accordance with any other provision of this Lease Agreement;<br />
+            C.	provides any false, incorrect or misleading information with respect to this Lease Agreement;<br />
+            D.	becomes the subject of a bankruptcy or insolvency proceeding; or<br />
+            E.	the Vehicle is lost, stolen, seized, or damaged beyond reasonably repair.
+        </p>
 
-    <p>
-        A.	terminate this Agreement and Lessee’s right to use the Vehicle;<br />
-        B.	take possession of the Vehicle from Lessee or Lessee’s  property or elsewhere, in any manner not prohibited by Law;<br />
-        C.	require Lessee to pay the amount set forth in Section 17;<br />
-        D.	pursue any other remedy allowed by Law; and<br />
-        E.	require Lessee to pay all of Lessor’s expenses for taking these actions, including, but not limited to, expenses for repossession, transportation, storage, collection, and legal costs, including reasonable attorney’s fees not exceeding fifteen (15%) percent of the amount due.
-    </p>
+        <p>
+            15. If Lessee is in default Lessor may do any of the following:
+        </p>
 
-    <p>
-        16. Lessee authorizes Lessor, at any time, to investigate any information provided on Lessee’s credit 
-        application. Lessee authorizes Lessor to provide information concerning Lessee’s account to credit 
-        reporting agencies and others who may lawfully receive such information.
-    </p>
+        <p>
+            A.	terminate this Agreement and Lessee’s right to use the Vehicle;<br />
+            B.	take possession of the Vehicle from Lessee or Lessee’s  property or elsewhere, in any manner not prohibited by Law;<br />
+            C.	require Lessee to pay the amount set forth in Section 17;<br />
+            D.	pursue any other remedy allowed by Law; and<br />
+            E.	require Lessee to pay all of Lessor’s expenses for taking these actions, including, but not limited to, expenses for repossession, transportation, storage, collection, and legal costs, including reasonable attorney’s fees not exceeding fifteen (15%) percent of the amount due.
+        </p>
 
-    <p>
-        17. This Lease Agreement sets forth the entire agreement between the parties hereto relating to the 
-        transaction reflected herein and supersedes all prior agreements and understandings of the parties in 
-        connection therewith. This Agreement shall not be amended or modified in any respect, and none of the 
-        provisions of this Agreement shall be waived, except by an instrument in writing signed by the party 
-        against whom enforcement is sought.
-    </p>
+        <p>
+            16. Lessee authorizes Lessor, at any time, to investigate any information provided on Lessee’s credit
+            application. Lessee authorizes Lessor to provide information concerning Lessee’s account to credit
+            reporting agencies and others who may lawfully receive such information.
+        </p>
 
-    <p>
-        18. Any notice, report, demand, waiver or consent required or permitted hereunder shall be in writing and 
-        shall be delivered in person or by prepaid, first class, registered or certified mail, with return receipt 
-        requested, or by Federal Express, addressed at the address set forth on the first page hereof. Such notice 
-        shall be deemed to have been duly given and received when delivered in person or one day after dispatch by 
-        Federal Express or three days after dispatch by registered or certified mail, properly addressed postage 
-        prepaid. Either party may change its address for the purpose of notice in accordance with the previsions of 
-        this Section.
-    </p>
+        <p>
+            17. This Lease Agreement sets forth the entire agreement between the parties hereto relating to the
+            transaction reflected herein and supersedes all prior agreements and understandings of the parties in
+            connection therewith. This Agreement shall not be amended or modified in any respect, and none of the
+            provisions of this Agreement shall be waived, except by an instrument in writing signed by the party
+            against whom enforcement is sought.
+        </p>
 
-    <p>
-        19. No failure on the part of any to exercise, and no delay in exercising, any right hereunder shall operate 
-        as a waiver thereof, nor shall any single or partial exercise of any right hereunder preclude any other 
-        exercise thereof. No waiver of any breach by any party of any of the terms and conditions hereof shall operate 
-        as a waiver of any other further breach of any of the terms and conditions hereof. The remedies herein provided 
-        are cumulative and not exclusive of any remedies provides by Law.
-    </p>
+        <p>
+            18. Any notice, report, demand, waiver or consent required or permitted hereunder shall be in writing and
+            shall be delivered in person or by prepaid, first class, registered or certified mail, with return receipt
+            requested, or by Federal Express, addressed at the address set forth on the first page hereof. Such notice
+            shall be deemed to have been duly given and received when delivered in person or one day after dispatch by
+            Federal Express or three days after dispatch by registered or certified mail, properly addressed postage
+            prepaid. Either party may change its address for the purpose of notice in accordance with the previsions of
+            this Section.
+        </p>
 
-    <p>
-        20. This Lease Agreement shall be governed by and construed in accordance with the Law of the State of New York 
-        without regard to the conflict of laws provisions thereof. Each of the parties hereby expressly and irrevocably 
-        submit to the jurisdiction and venue of a court sitting in the State of New York, county of Queens in any 
-        action or proceeding arising out of or relating to this Lease Agreement and expressly and irrevocably waives 
-        any immunity from jurisdiction thereof and any claim of improper venue, forum non conveniens or any similar 
-        basis to which it might otherwise be entitled in any such action or proceeding. 
-    </p>
+        <p>
+            19. No failure on the part of any to exercise, and no delay in exercising, any right hereunder shall operate
+            as a waiver thereof, nor shall any single or partial exercise of any right hereunder preclude any other
+            exercise thereof. No waiver of any breach by any party of any of the terms and conditions hereof shall operate
+            as a waiver of any other further breach of any of the terms and conditions hereof. The remedies herein provided
+            are cumulative and not exclusive of any remedies provides by Law.
+        </p>
 
-    <p>
-        21. This Lease Agreement has been prepared by @Model.lessor. and each other party to this Lease Agreement 
-        confirms that it has consulted with its own legal counsel prior to signing this Lease Agreement.
-    </p>
+        <p>
+            20. This Lease Agreement shall be governed by and construed in accordance with the Law of the State of New York
+            without regard to the conflict of laws provisions thereof. Each of the parties hereby expressly and irrevocably
+            submit to the jurisdiction and venue of a court sitting in the State of New York, county of Queens in any
+            action or proceeding arising out of or relating to this Lease Agreement and expressly and irrevocably waives
+            any immunity from jurisdiction thereof and any claim of improper venue, forum non conveniens or any similar
+            basis to which it might otherwise be entitled in any such action or proceeding.
+        </p>
 
-    <p>
-        22. This Lease Agreement will termite if the Lessee returns the car to the Lessor with a qualified replacement 
-        driver to be approved by Rhivanjor Corp.
-    </p>
+        <p>
+            21. This Lease Agreement has been prepared by @Model.lessor. and each other party to this Lease Agreement
+            confirms that it has consulted with its own legal counsel prior to signing this Lease Agreement.
+        </p>
 
-    <table>
-        <tr>
-            <td>Lessor:</td>
-            <td>&nbsp;</td>
-            <td>Lessee:</td>
-        </tr>
-        <tr>
-            <td>@Model.lessor</td>
-            <td>&nbsp;</td>
-            <td>@Model.lessee</td>
-        </tr>
-        <tr>
-            <td>address1;</td>
-            <td>&nbsp;</td>
-            <td>address1</td>
-        </tr>
-        <tr>
-            <td>address2</td>
-            <td>&nbsp;</td>
-            <td>address2</td>
-        </tr>
-        <tr>
-            <td>phone</td>
-            <td>&nbsp;</td>
-            <td>phone</td>
-        </tr>
-        <tr>
-            <td>email</td>
-            <td>&nbsp;</td>
-            <td>email</td>
-        </tr>
-    </table>
+        <p>
+            22. This Lease Agreement will termite if the Lessee returns the car to the Lessor with a qualified replacement
+            driver to be approved by Rhivanjor Corp.
+        </p>
 
-    <br />
+        <table>
+            <tr>
+                <td>Lessor:</td>
+                <td>&nbsp;</td>
+                <td>Lessee:</td>
+            </tr>
+            <tr>
+                <td>@Model.lessor</td>
+                <td>&nbsp;</td>
+                <td>@Model.lessee</td>
+            </tr>
+            <tr>
+                <td>address1;</td>
+                <td>&nbsp;</td>
+                <td>address1</td>
+            </tr>
+            <tr>
+                <td>address2</td>
+                <td>&nbsp;</td>
+                <td>address2</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>&nbsp;</td>
+                <td>phone</td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>&nbsp;</td>
+                <td>email</td>
+            </tr>
+        </table>
 
-    <table>
-        <tr>
-            <td style="border-top: thin solid #000000">
-                Signature Lessor
-            </td>
-            <td>&nbsp;</td>
-            <td style="border-top: thin solid #000000">
-                Signature Lessee
-            </td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="border-top: thin solid #000000">
-                Print Lessor
-            </td>
-            <td>&nbsp;</td>
-            <td style="border-top: thin solid #000000">
-                Print Lessee
-            </td>
-        </tr>
-        <tr>
-            <td style="border-top: thin solid #000000">
-                Date: 
-            </td>
-            <td>&nbsp;</td>
-            <td style="border-top: thin solid #000000">
-                Date: 
-            </td>
-        </tr>
-    </table>
+        <br />
 
-    </body>
+        <table>
+            <tr>
+                <td style="border-top: thin solid #000000">
+                    Signature Lessor
+                </td>
+                <td>&nbsp;</td>
+                <td style="border-top: thin solid #000000">
+                    Signature Lessee
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="border-top: thin solid #000000">
+                    Print Lessor
+                </td>
+                <td>&nbsp;</td>
+                <td style="border-top: thin solid #000000">
+                    Print Lessee
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: thin solid #000000">
+                    Date:
+                </td>
+                <td>&nbsp;</td>
+                <td style="border-top: thin solid #000000">
+                    Date:
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
 </html>

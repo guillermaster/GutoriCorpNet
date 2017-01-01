@@ -154,9 +154,9 @@ namespace GutoriCorp.Data.Operations
         {
             var currMonthFirstDay = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
 
-            var lastMonthFirstDay = DateTime.Now.Month == 1 ? 
-                                        new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1) :
-                                        new DateTime(DateTime.Now.Year-1, 12, 1);
+            var lastMonthFirstDay = DateTime.Now.Month == 1 ?
+                                        new DateTime(DateTime.Now.Year - 1, 12, 1) :
+                                        new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
 
             var totPayments = _context.Payment.Where(p => p.payment_date < currMonthFirstDay && p.payment_date >= lastMonthFirstDay).Sum(p => p.total_paid_amount);
             return totPayments;

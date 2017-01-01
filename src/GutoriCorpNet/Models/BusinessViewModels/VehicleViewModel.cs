@@ -131,7 +131,7 @@ namespace GutoriCorp.Models.BusinessViewModels
 
         public override string ToString()
         {
-            return make + " " + model + " " + year + " - " + tlc_plate;
+            return year + make + " " + model + " " + color;
         }
     }
 }

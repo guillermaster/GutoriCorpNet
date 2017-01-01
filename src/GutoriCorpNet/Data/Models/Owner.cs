@@ -23,6 +23,19 @@ namespace GutoriCorp.Data.Models
         [StringLength(100)]
         public string last_name { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public string phone { get; set; }
+
+        [StringLength(150)]
+        public string address { get; set; }
+
+        [StringLength(75)]
+        public string address2 { get; set; }
+
+        [StringLength(100)]
+        public string email { get; set; }
+
         public DateTime created_on { get; set; }
 
         public short created_by { get; set; }

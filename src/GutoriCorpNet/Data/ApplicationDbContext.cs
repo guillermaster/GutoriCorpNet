@@ -36,5 +36,7 @@ namespace GutoriCorp.Data
         public virtual DbSet<SystemUser> SystemUser { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
+
+        public virtual DbSet<DriverLicense> DriverLicense { get; set; }
     }
 }

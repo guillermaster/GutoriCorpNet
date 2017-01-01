@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GutoriCorp.Models.BusinessViewModels
 {
-    public class OwnerViewModel
+    public class DriverViewModel
     {
         public short id { get; set; }
 
@@ -29,12 +29,8 @@ namespace GutoriCorp.Models.BusinessViewModels
         [StringLength(100)]
         public string email { get; set; }
 
-        public DateTime created_on { get; set; }
-
-        public short created_by { get; set; }
-
-        public DateTime modified_on { get; set; }
-
-        public short modified_by { get; set; }
+        [Required]
+        [StringLength(20)]
+        public string ssn { get; set; }
     }
 }

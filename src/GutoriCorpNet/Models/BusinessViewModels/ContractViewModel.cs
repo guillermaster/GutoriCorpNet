@@ -61,6 +61,9 @@ namespace GutoriCorp.Models.BusinessViewModels
         [Display(Name = "Addicent Penalty Fee")]
         public decimal? accident_penalty_fee { get; set; }
 
+        [Display(Name = "Deposit")]
+        public decimal? deposit { get; set; }
+
         [Display(Name = "Status")]
         public short status_id { get; set; }
 
@@ -104,6 +107,8 @@ namespace GutoriCorp.Models.BusinessViewModels
         public IEnumerable<SelectListItem> ContractLateFeeTypes { get; set; }
         public IEnumerable<SelectListItem> Owners { get; set; }
         public IEnumerable<SelectListItem> Drivers { get; set; }
+        
+        
         //public List<GeneralViewModels.GeneralCatalogValue> Frecuencies { get; set; }
         //public List<GeneralViewModels.GeneralCatalogValue> LateFeesTypes { get; set; }
     }

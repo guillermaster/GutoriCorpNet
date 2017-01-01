@@ -57,7 +57,7 @@ namespace GutoriCorp.Controllers
         public IActionResult GetPdf(long? id)
         {
             var contractDataOp = new ContractData(_context);
-            var contract = contractDataOp.Get(id);
+            var contract = contractDataOp.Get(id, true);
 
             string webRootPath = _hostingEnvironment.WebRootPath;
             string contentRootPath = _hostingEnvironment.ContentRootPath;

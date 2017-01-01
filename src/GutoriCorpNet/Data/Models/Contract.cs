@@ -29,6 +29,8 @@ namespace GutoriCorp.Data.Models
 
         public decimal? accident_penalty_fee { get; set; }
 
+        public decimal? deposit { get; set; }
+
         public short status_id { get; set; }
 
         public DateTime created_on { get; set; }

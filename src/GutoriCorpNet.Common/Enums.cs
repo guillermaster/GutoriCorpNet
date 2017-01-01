@@ -17,7 +17,8 @@ namespace GutoriCorpNet.Common
             VehicleBodyHull = 5,
             Colors = 6,
             Fuels = 7,
-            Types = 8
+            Types = 8,
+            PersonType = 9
         }
 
         public enum GeneralStatus
@@ -30,6 +31,18 @@ namespace GutoriCorpNet.Common
         {
             Weekly = 5,
             Monthly = 6
+        }
+
+        public enum PersonType
+        {
+            NaturalPerson = 23,
+            BusinessPerson = 24
+        }
+
+        public enum DriverLicenseType
+        {
+            DriverLicense = 25,
+            TlcLicense = 26
         }
     }
 }
