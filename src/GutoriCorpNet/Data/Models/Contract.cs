@@ -33,6 +33,8 @@ namespace GutoriCorp.Data.Models
 
         public decimal? deposit { get; set; }
 
+        public decimal? buyout_fee { get; set; }
+
         public short status_id { get; set; }
 
         public DateTime created_on { get; set; }

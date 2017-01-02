@@ -7,16 +7,21 @@
             text-align: center;
             text-decoration: underline;
             text-transform: uppercase;
+            font-size: 36pt;
+        }
+        body{
+            font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+            font-size: 12pt;
         }
     </style>
 </head>
 <body>
-    <div style="padding: 0 20px">
+    <div style="padding: 50px 45px 35px 85px">
         <h1>LEASE AGREEMENT</h1>
         <table>
             <tr>
-                <td>1.</td>
-                <td>Lessor:</td>
+                <td width="20px">1.</td>
+                <td width="85px">Lessor:</td>
                 <td>@Model.lessor</td>
             </tr>
             <tr>
@@ -40,7 +45,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>2.</td>
+                <td>&nbsp;</td>
                 <td>Lessee:</td>
                 <td>@Model.lessee</td>
             </tr>
@@ -59,53 +64,43 @@
                 <td>&nbsp;</td>
                 <td>@Model.Lessee.email</td>
             </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
         </table>
 
         <br />
 
         <table>
             <tr>
-                <td>Driver License:</td>
-                <td># @Model.DriverLicense.number</td>
-                <td>&nbsp;</td>
-                <td>Expires:</td>
-                <td>@Model.DriverLicense.expire_date</td>
+                <td width="110px">Driver License:</td>
+                <td width="250px"># <strong>@Model.DriverLicense.number</strong></td>
+                <td width="58px">Expires:</td>
+                <td><strong>@Model.DriverLicense.expire_date</strong></td>
             </tr>
             <tr>
                 <td>TLC License:</td>
-                <td># @Model.TlcLicense.number</td>
-                <td>&nbsp;</td>
+                <td># <strong>@Model.TlcLicense.number</strong></td>
                 <td>Expires:</td>
-                <td>@Model.TlcLicense.expire_date</td>
+                <td><strong>@Model.TlcLicense.expire_date</strong></td>
             </tr>
-            <tr>
-                <td>Vehicle:</td>
-                <td># @Model.vehicle_id</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td>Vehicle:</td>
+                    <td># <strong>@Model.vehicle_id</strong></td>
+                </tr>
+            </table>
+            <table>
             <tr>
                 <td>Year/Make/Model/Color:</td>
-                <td>@Model.Vehicle.ToString()</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td><strong>@Model.Vehicle.ToString()</strong></td>
             </tr>
+            </table>
+            <table>
             <tr>
                 <td>VIN:</td>
-                <td># @Model.Vehicle.vin_code</td>
-                <td>&nbsp;</td>
+                <td style="width: 300px"># <strong>@Model.Vehicle.vin_code</strong></td>
                 <td>License plate:</td>
-                <td># @Model.Vehicle.tlc_plate</td>
+                <td># <strong>@Model.Vehicle.tlc_plate</strong></td>
             </tr>
         </table>
 
@@ -115,10 +110,12 @@
             <strong>Term-</strong> Lease Commencement @Model.contract_date $@Model.deposit Deposit 
             <span style="text-decoration: underline">Lease Payments:</span> 
             $390.00/@(Model.frequency_id == (short)GutoriCorpNet.Common.Enums.PaymentFrequency.Weekly ? "Week" : "Month" ) 
-            for @Model.contract_length_years @(Model.contract_length_months == 12 ? "year" : "years"), then $1.00 buyout to own plus taxes and other expenses.
-            <span style="text-decoration: underline">Includes:</span> insurance, registration, TLC plates/diamond and maintenance.
-                (all subject to general price increases or driver specific increases).
-                30 days notice cancellation.
+            for @Model.contract_length_years @(Model.contract_length_months == 12 ? "year" : "years")
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? 
+            ", then $" + Model.buyout_fee + " buyout to own plus taxes and other expenses" : "")
+            . <span style="text-decoration: underline">Includes:</span> insurance, registration, TLC plates/diamond and maintenance.
+             (all subject to general price increases or driver specific increases).
+            <br />30 days notice cancellation.
 </p>
 
         <p>
@@ -129,7 +126,7 @@
 
         <p>
             3. Other than as specifically set forth in this Lessee Agreement, Lessee shall be responsible for all costs
-            and expenses associated with the vehicle during the Term, including but not limited to (i) tickets, (ii)
+            and expenses associated with the vehicle during the <span style="font-weight: bold; font-style: italic;">Term</span>, including but not limited to (i) tickets, (ii)
             citations, (iii) violations and (iv) necessary or required inspections (which shall take place no less than
             every four (4) months during the Term), Warranty on transmission and engine only.
         </p>
@@ -140,7 +137,8 @@
         </p>
 
         <p>
-            5. No person, other than Lessee, shall be permitted to operate the Vehicle during the <strong>Term</strong>,
+            5. No person, other than Lessee, shall be permitted to operate the Vehicle during the 
+            <span style="font-weight: bold; font-style: italic;">Term</span>,
             without the prior written consent of Lessor in each instance. Failure to comply with this Section shall result
             in immediate termination of this Lease Agreement.
         </p>
@@ -154,49 +152,72 @@
         </p>
 
         <p>
-            7. Provided Lessee is in compliance with all provisions of this Lease Agreement and no amounts are then
-            due and owing by Lessee to Lessor, upon the Lease Expiration Lessee shall have the option to purchase the
-            vehicle from Lessor for the purchase price of $1.00.
-            Option shall be exercised within three (3) days of the Lease Expiration.
+        @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ?
+            "7. Provided Lessee is in compliance with all provisions of this Lease Agreement and no amounts are then " +
+            "due and owing by Lessee to Lessor, upon the Lease Expiration Lessee shall have the option to purchase the " +
+            "vehicle from Lessor for the purchase price of $" + Model.buyout_fee +
+            ". Option shall be exercised within three (3) days of the Lease Expiration." : "")
         </p>
 
         <p>
-            8. Lessee will not, or permit others to do any of the following:
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "8" : "7"). 
+            Lessee will not, or permit others to do any of the following:
+        </p>
+
+        <table>
+            <tr>
+                <td width="20px" style="vertical-align: top">A.</td>
+                <td width="500px">Use the Vehicle in any illegal manner, in violation of any insurance policy maintained on the Vehicle;</td>
+            </tr>
+            <tr>
+                <td>B.</td>
+                <td>Alter the Vehicle without Lessor’s written consent;</td>
+            </tr>
+            <tr>
+                <td>C.</td>
+                <td>Subject the Vehicle to any lien, seizure or other involuntary transfer;</td>
+            </tr>
+            <tr>
+                <td>D.</td>
+                <td>Remove the Vehicle from the state where it was first titled, for more than seven (7) days, without Lessor’s prior written consent;</td>
+            </tr>
+            <tr>
+                <td>E.</td>
+                <td>Take the Vehicle outside the United States</td>
+            </tr>
+        </table>
+
+        <p>
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "9" : "8"). 
+            Assignment or subleasing by Lessee of the Vehicle or this Lease is strictly prohibited.
         </p>
 
         <p>
-            A.	Use the Vehicle in any illegal manner, in violation of any insurance policy maintained on the Vehicle;<br />
-            B.	Alter the Vehicle without Lessor’s written consent;<br />
-            C.	Subject the Vehicle to any lien, seizure or other involuntary transfer;<br />
-            D.	Remove the Vehicle from the state where it was first titled, for more than seven (7) days, without Lessor’s prior written consent;<br />
-            E.	Take the Vehicle outside the United States
-        </p>
-
-        <p>
-            9. Assignment or subleasing by Lessee of the Vehicle or this Lease is strictly prohibited.
-        </p>
-
-        <p>
-            10.  If Lessor does not receive any weekly Lease Payment within three (3) days after it is due,
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "10" : "9"). 
+            If Lessor does not receive any weekly Lease Payment within three (3) days after it is due,
             Lessee must pay late payment charge of five (5%) percent of the unpaid amount.
         </p>
 
         <p>
-            11. Lessee may not charge or stop the weekly Lease Payments for any reason, even if the Vehicle is stolen,
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "11" : "10"). 
+            Lessee may not charge or stop the weekly Lease Payments for any reason, even if the Vehicle is stolen,
             destroyed, seized by the government, non-operable, experiences any mechanical problem, or does not perform
             satisfactorily.
         </p>
 
         <p>
-            12. Lessee must notify Lessor within ten (10) days of any change in Lessee’s address.
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "12" : "11"). 
+            Lessee must notify Lessor within ten (10) days of any change in Lessee’s address.
         </p>
 
         <p>
-            13.  Lessee must also promptly pay any fines incurred on the Vehicle such as traffic or parking tickets.
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "13" : "12"). 
+            Lessee must also promptly pay any fines incurred on the Vehicle such as traffic or parking tickets.
         </p>
 
         <p>
-            14. A default shall occur if Lessee:
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "14" : "13"). 
+            A default shall occur if Lessee:
         </p>
 
         <p>
@@ -208,7 +229,8 @@
         </p>
 
         <p>
-            15. If Lessee is in default Lessor may do any of the following:
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "15" : "16"). 
+            If Lessee is in default Lessor may do any of the following:
         </p>
 
         <p>
@@ -220,13 +242,15 @@
         </p>
 
         <p>
-            16. Lessee authorizes Lessor, at any time, to investigate any information provided on Lessee’s credit
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "16" : "15"). 
+            Lessee authorizes Lessor, at any time, to investigate any information provided on Lessee’s credit
             application. Lessee authorizes Lessor to provide information concerning Lessee’s account to credit
             reporting agencies and others who may lawfully receive such information.
         </p>
 
         <p>
-            17. This Lease Agreement sets forth the entire agreement between the parties hereto relating to the
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "17" : "16"). 
+            This Lease Agreement sets forth the entire agreement between the parties hereto relating to the
             transaction reflected herein and supersedes all prior agreements and understandings of the parties in
             connection therewith. This Agreement shall not be amended or modified in any respect, and none of the
             provisions of this Agreement shall be waived, except by an instrument in writing signed by the party
@@ -234,7 +258,8 @@
         </p>
 
         <p>
-            18. Any notice, report, demand, waiver or consent required or permitted hereunder shall be in writing and
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "18" : "19"). 
+            Any notice, report, demand, waiver or consent required or permitted hereunder shall be in writing and
             shall be delivered in person or by prepaid, first class, registered or certified mail, with return receipt
             requested, or by Federal Express, addressed at the address set forth on the first page hereof. Such notice
             shall be deemed to have been duly given and received when delivered in person or one day after dispatch by
@@ -244,7 +269,8 @@
         </p>
 
         <p>
-            19. No failure on the part of any to exercise, and no delay in exercising, any right hereunder shall operate
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "19" : "18"). 
+            No failure on the part of any to exercise, and no delay in exercising, any right hereunder shall operate
             as a waiver thereof, nor shall any single or partial exercise of any right hereunder preclude any other
             exercise thereof. No waiver of any breach by any party of any of the terms and conditions hereof shall operate
             as a waiver of any other further breach of any of the terms and conditions hereof. The remedies herein provided
@@ -252,21 +278,25 @@
         </p>
 
         <p>
-            20. This Lease Agreement shall be governed by and construed in accordance with the Law of the State of New York
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "20" : "19"). 
+            This Lease Agreement shall be governed by and construed in accordance with the Law of the State of New York
             without regard to the conflict of laws provisions thereof. Each of the parties hereby expressly and irrevocably
             submit to the jurisdiction and venue of a court sitting in the State of New York, county of Queens in any
             action or proceeding arising out of or relating to this Lease Agreement and expressly and irrevocably waives
-            any immunity from jurisdiction thereof and any claim of improper venue, forum non conveniens or any similar
+            any immunity from jurisdiction thereof and any claim of improper venue, 
+            <span style="text-decoration: underline">forum non conveniens</span> or any similar
             basis to which it might otherwise be entitled in any such action or proceeding.
         </p>
 
         <p>
-            21. This Lease Agreement has been prepared by @Model.lessor. and each other party to this Lease Agreement
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "21" : "20"). 
+            This Lease Agreement has been prepared by @Model.lessor and each other party to this Lease Agreement
             confirms that it has consulted with its own legal counsel prior to signing this Lease Agreement.
         </p>
 
         <p>
-            22. This Lease Agreement will termite if the Lessee returns the car to the Lessor with a qualified replacement
+            @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "22" : "21"). 
+            This Lease Agreement will termite if the Lessee returns the car to the Lessor with a qualified replacement
             driver to be approved by Rhivanjor Corp.
         </p>
 

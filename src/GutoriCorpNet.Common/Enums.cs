@@ -21,6 +21,12 @@ namespace GutoriCorpNet.Common
             PersonType = 9
         }
 
+        public enum ContractType
+        {
+            Rent = 1,
+            RentToOwn = 2
+        }
+
         public enum GeneralStatus
         {
             Active = 3,

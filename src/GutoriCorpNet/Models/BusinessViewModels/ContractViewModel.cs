@@ -77,6 +77,9 @@ namespace GutoriCorp.Models.BusinessViewModels
         [Display(Name = "Deposit")]
         public decimal? deposit { get; set; }
 
+        [Display(Name = "Buyout fee")]
+        public decimal? buyout_fee { get; set; }
+
         [Display(Name = "Status")]
         public short status_id { get; set; }
 
