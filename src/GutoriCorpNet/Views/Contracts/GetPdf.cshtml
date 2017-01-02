@@ -9,9 +9,20 @@
             text-transform: uppercase;
             font-size: 36pt;
         }
+        h2{
+            text-transform: capitalize;
+            text-decoration: underline;
+            font-size: 16pt;
+            padding:0;
+            margin: 0;
+        }
         body{
             font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
             font-size: 12pt;
+        }
+        hr{
+            margin: 0 0 -3px 0;
+            padding: 0;
         }
     </style>
 </head>
@@ -163,30 +174,30 @@
             @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "8" : "7"). 
             Lessee will not, or permit others to do any of the following:
         </p>
-
-        <table>
-            <tr>
-                <td width="20px" style="vertical-align: top">A.</td>
-                <td width="500px">Use the Vehicle in any illegal manner, in violation of any insurance policy maintained on the Vehicle;</td>
-            </tr>
-            <tr>
-                <td>B.</td>
-                <td>Alter the Vehicle without Lessor’s written consent;</td>
-            </tr>
-            <tr>
-                <td>C.</td>
-                <td>Subject the Vehicle to any lien, seizure or other involuntary transfer;</td>
-            </tr>
-            <tr>
-                <td>D.</td>
-                <td>Remove the Vehicle from the state where it was first titled, for more than seven (7) days, without Lessor’s prior written consent;</td>
-            </tr>
-            <tr>
-                <td>E.</td>
-                <td>Take the Vehicle outside the United States</td>
-            </tr>
-        </table>
-
+        <div style="padding: -5px 0 10px 20px">
+            <table>
+                <tr>
+                    <td width="20px" style="vertical-align: top">A.</td>
+                    <td width="500px">Use the Vehicle in any illegal manner, in violation of any insurance policy maintained on the Vehicle;</td>
+                </tr>
+                <tr>
+                    <td>B.</td>
+                    <td>Alter the Vehicle without Lessor’s written consent;</td>
+                </tr>
+                <tr>
+                    <td>C.</td>
+                    <td>Subject the Vehicle to any lien, seizure or other involuntary transfer;</td>
+                </tr>
+                <tr>
+                    <td>D.</td>
+                    <td>Remove the Vehicle from the state where it was first titled, for more than seven (7) days, without Lessor’s prior written consent;</td>
+                </tr>
+                <tr>
+                    <td>E.</td>
+                    <td>Take the Vehicle outside the United States</td>
+                </tr>
+            </table>
+        </div>
         <p>
             @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "9" : "8"). 
             Assignment or subleasing by Lessee of the Vehicle or this Lease is strictly prohibited.
@@ -219,27 +230,59 @@
             @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "14" : "13"). 
             A default shall occur if Lessee:
         </p>
-
-        <p>
-            A.	fails to make any payment when such payment is due;<br />
-            B.	fails to perform in accordance with any other provision of this Lease Agreement;<br />
-            C.	provides any false, incorrect or misleading information with respect to this Lease Agreement;<br />
-            D.	becomes the subject of a bankruptcy or insolvency proceeding; or<br />
-            E.	the Vehicle is lost, stolen, seized, or damaged beyond reasonably repair.
-        </p>
-
+        <div style="padding: -5px 0 10px 20px">
+            <table>
+                <tr>
+                    <td width="20px" style="vertical-align: top">A.</td>
+                    <td width="500px">fails to make any payment when such payment is due;</td>
+                </tr>
+                <tr>
+                    <td>B.</td>
+                    <td>fails to perform in accordance with any other provision of this Lease Agreement;</td>
+                </tr>
+                <tr>
+                    <td>C.</td>
+                    <td>provides any false, incorrect or misleading information with respect to this Lease Agreement;</td>
+                </tr>
+                <tr>
+                    <td>D.</td>
+                    <td>becomes the subject of a bankruptcy or insolvency proceeding; or</td>
+                </tr>
+                <tr>
+                    <td>E.</td>
+                    <td>the Vehicle is lost, stolen, seized, or damaged beyond reasonably repair.</td>
+                </tr>
+            </table>
+        </div>
         <p>
             @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "15" : "16"). 
             If Lessee is in default Lessor may do any of the following:
         </p>
 
-        <p>
-            A.	terminate this Agreement and Lessee’s right to use the Vehicle;<br />
-            B.	take possession of the Vehicle from Lessee or Lessee’s  property or elsewhere, in any manner not prohibited by Law;<br />
-            C.	require Lessee to pay the amount set forth in Section 17;<br />
-            D.	pursue any other remedy allowed by Law; and<br />
-            E.	require Lessee to pay all of Lessor’s expenses for taking these actions, including, but not limited to, expenses for repossession, transportation, storage, collection, and legal costs, including reasonable attorney’s fees not exceeding fifteen (15%) percent of the amount due.
-        </p>
+        <div style="padding: -5px 0 10px 20px">
+            <table>
+                <tr>
+                    <td width="20px" style="vertical-align: top">A.</td>
+                    <td width="500px">terminate this Agreement and Lessee’s right to use the Vehicle;</td>
+                </tr>
+                <tr>
+                    <td>B.</td>
+                    <td>take possession of the Vehicle from Lessee or Lessee’s  property or elsewhere, in any manner not prohibited by Law;</td>
+                </tr>
+                <tr>
+                    <td>C.</td>
+                    <td>require Lessee to pay the amount set forth in Section 17;</td>
+                </tr>
+                <tr>
+                    <td>D.</td>
+                    <td>pursue any other remedy allowed by Law; and</td>
+                </tr>
+                <tr>
+                    <td>E.</td>
+                    <td>require Lessee to pay all of Lessor’s expenses for taking these actions, including, but not limited to, expenses for repossession, transportation, storage, collection, and legal costs, including reasonable attorney’s fees not exceeding fifteen (15%) percent of the amount due.</td>
+                </tr>
+            </table>
+        </div>
 
         <p>
             @(Model.contract_type_id == (short)GutoriCorpNet.Common.Enums.ContractType.RentToOwn ? "16" : "15"). 
@@ -300,73 +343,82 @@
             driver to be approved by Rhivanjor Corp.
         </p>
 
-        <table>
-            <tr>
-                <td>Lessor:</td>
-                <td>&nbsp;</td>
-                <td>Lessee:</td>
-            </tr>
-            <tr>
-                <td>@Model.lessor</td>
-                <td>&nbsp;</td>
-                <td>@Model.lessee</td>
-            </tr>
-            <tr>
-                <td>address1;</td>
-                <td>&nbsp;</td>
-                <td>address1</td>
-            </tr>
-            <tr>
-                <td>address2</td>
-                <td>&nbsp;</td>
-                <td>address2</td>
-            </tr>
-            <tr>
-                <td>phone</td>
-                <td>&nbsp;</td>
-                <td>phone</td>
-            </tr>
-            <tr>
-                <td>email</td>
-                <td>&nbsp;</td>
-                <td>email</td>
-            </tr>
-        </table>
-
-        <br />
-
-        <table>
-            <tr>
-                <td style="border-top: thin solid #000000">
-                    Signature Lessor
-                </td>
-                <td>&nbsp;</td>
-                <td style="border-top: thin solid #000000">
-                    Signature Lessee
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td style="border-top: thin solid #000000">
-                    Print Lessor
-                </td>
-                <td>&nbsp;</td>
-                <td style="border-top: thin solid #000000">
-                    Print Lessee
-                </td>
-            </tr>
-            <tr>
-                <td style="border-top: thin solid #000000">
-                    Date:
-                </td>
-                <td>&nbsp;</td>
-                <td style="border-top: thin solid #000000">
-                    Date:
-                </td>
-            </tr>
-        </table>
+        <div style="padding: 25px 0 10px -10px">
+            <table>
+                <tr>
+                    <td width="330px"><h2>LESSOR:</h2></td>
+                    <td><h2>LESSEE:</h2></td>
+                </tr>
+                <tr>
+                    <td>@Model.lessor</td>
+                    <td>@Model.lessee</td>
+                </tr>
+                <tr>
+                    <td>@Model.Lessor.address</td>
+                    <td>@Model.Lessee.address</td>
+                </tr>
+                <tr>
+                    <td>@Model.Lessor.address2</td>
+                    <td>@Model.Lessee.address2</td>
+                </tr>
+                <tr>
+                    <td>@Model.Lessor.phone</td>
+                    <td>@Model.Lessee.phone</td>
+                </tr>
+                <tr>
+                    <td>@Model.Lessor.email</td>
+                    <td>@Model.Lessee.email</td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td>&nbsp;<br /><br /><br /><br /><br /></td>
+                </tr>
+                <tr>
+                    <td width="180px">
+                        <hr />
+                        SIGNATURE LESSOR
+                    </td>
+                    <td width="145px">&nbsp;</td>
+                    <td width="180px">
+                        <hr />
+                        SIGNATURE LESSEE
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<br /><br /><br /><br /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <hr />
+                        PRINT LESSOR
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <hr />
+                        PRINT LESSEE
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<br /><br /><br /><br /><br /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <hr />
+                        DATE:
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <hr />
+                        DATE:
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>
