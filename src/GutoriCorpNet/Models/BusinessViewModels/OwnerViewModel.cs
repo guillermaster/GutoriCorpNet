@@ -16,6 +16,9 @@ namespace GutoriCorp.Models.BusinessViewModels
         [StringLength(100)]
         public string last_name { get; set; }
 
+        [StringLength(150)]
+        public string business_name { get; set; }
+
         [Required]
         [StringLength(20)]
         public string phone { get; set; }

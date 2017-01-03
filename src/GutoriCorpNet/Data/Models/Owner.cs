@@ -23,6 +23,9 @@ namespace GutoriCorp.Data.Models
         [StringLength(100)]
         public string last_name { get; set; }
 
+        [StringLength(150)]
+        public string business_name { get; set; }
+
         [Required]
         [StringLength(20)]
         public string phone { get; set; }
@@ -43,16 +46,12 @@ namespace GutoriCorp.Data.Models
         public DateTime modified_on { get; set; }
 
         public short modified_by { get; set; }
-
-        //public virtual ICollection<Contract> Contracts { get; set; }
-
-        //public virtual SystemUser SystemUser { get; set; }
-
-        //public virtual SystemUser SystemUser1 { get; set; }
-
+        
         public override string ToString()
         {
-            return first_name + " " + last_name;
+            return string.IsNullOrWhiteSpace(business_name) ?
+                first_name + " " + last_name :
+                business_name;
         }
     }
 }

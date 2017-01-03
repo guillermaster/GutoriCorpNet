@@ -52,7 +52,7 @@
                                 @Html.DisplayFor(modelItem => item.id)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.contract_date)
+                                @item.contract_date.ToShortDateString()
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.contract_type)
@@ -72,7 +72,6 @@
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
                                 <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
                                 <a href="../ContractsVehicles/Edit/@item.id">Set Vehicle</a>
                             </td>
                         </tr>

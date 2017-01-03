@@ -84,13 +84,13 @@
                 <td width="110px">Driver License:</td>
                 <td width="250px"># <strong>@Model.DriverLicense.number</strong></td>
                 <td width="58px">Expires:</td>
-                <td><strong>@Model.DriverLicense.expire_date</strong></td>
+                <td><strong>@Model.DriverLicense.expire_date.ToShortDateString()</strong></td>
             </tr>
             <tr>
                 <td>TLC License:</td>
                 <td># <strong>@Model.TlcLicense.number</strong></td>
                 <td>Expires:</td>
-                <td><strong>@Model.TlcLicense.expire_date</strong></td>
+                <td><strong>@Model.TlcLicense.expire_date.ToShortDateString()</strong></td>
             </tr>
             </table>
             <br />
@@ -118,7 +118,7 @@
         <br />
 
         <p>
-            <strong>Term-</strong> Lease Commencement @Model.contract_date $@Model.deposit Deposit 
+            <strong>Term-</strong> Lease Commencement @Model.contract_date.ToShortDateString() $@Model.deposit Deposit 
             <span style="text-decoration: underline">Lease Payments:</span> 
             $390.00/@(Model.frequency_id == (short)GutoriCorpNet.Common.Enums.PaymentFrequency.Weekly ? "Week" : "Month" ) 
             for @Model.contract_length_years @(Model.contract_length_months == 12 ? "year" : "years")
