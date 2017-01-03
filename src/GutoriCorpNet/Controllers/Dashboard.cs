@@ -1,10 +1,12 @@
 using GutoriCorp.Data;
 using GutoriCorp.Data.Operations;
 using GutoriCorp.Models.GeneralViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GutoriCorp.Controllers
 {
+    [Authorize]
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
