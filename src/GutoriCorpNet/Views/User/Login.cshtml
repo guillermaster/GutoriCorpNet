@@ -1,36 +1,50 @@
-﻿@{
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+
+@{
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
 <div class="container-full">
-    <div class="container container-xs"><img src="~/images/logo.png" class="mv-lg block-center img-responsive thumb64">
-    <form id="user-login" action="" name="loginForm" novalidate="" class="card b0 form-validate">
-        <div class="card-offset pb0">
-        <div class="card-offset-item text-right hidden">
-            <div class="btn btn-success btn-circle btn-lg"><em class="ion-checkmark-round"></em></div>
-        </div>
-        </div>
-        <div class="card-heading">
-        <div class="card-title text-center">Login</div>
-        </div>
-        <div class="card-body">
-        <div class="mda-form-group float-label mda-input-group">
-            <div class="mda-form-control">
-            <input type="email" name="accountName" required="" class="form-control">
-            <div class="mda-form-control-line"></div>
-            <label>Email address</label>
-            </div><span class="mda-input-group-addon"><em class="ion-ios-email-outline icon-lg"></em></span>
-        </div>
-        <div class="mda-form-group float-label mda-input-group">
-            <div class="mda-form-control">
-            <input type="password" name="accountPassword" required="" class="form-control">
-            <div class="mda-form-control-line"></div>
-            <label>Password</label>
-            </div><span class="mda-input-group-addon"><em class="ion-ios-locked-outline icon-lg"></em></span>
-        </div>
-        </div>
-        <button type="submit" class="btn btn-primary btn-flat">Authenticate</button>
-    </form>
-    <div class="text-center text-sm"><a href="@Url.Action("Recover", "User")" class="text-inherit">Forgot password?</a></div>
+    <div class="container container-xs">
+        <img src="~/images/logo.png" class="mv-lg block-center img-responsive thumb64">
+        <form asp-controller="User" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="card b0 form-validate">
+            <div class="card-offset pb0">
+                <div class="card-offset-item text-right hidden">
+                    <div class="btn btn-success btn-circle btn-lg"><em class="ion-checkmark-round"></em></div>
+                </div>
+            </div>
+            <div class="card-heading">
+                <div class="card-title text-center">Login</div>
+            </div>
+            <div class="card-body">
+                <div class="mda-form-group float-label mda-input-group">
+                    <div class="mda-form-control">
+                        <input asp-for="Email" class="form-control" type="email" />
+                        <div class="mda-form-control-line"></div>
+                        <label asp-for="Email"></label>
+                    </div><span class="mda-input-group-addon"><em class="ion-ios-email-outline icon-lg"></em></span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group">
+                    <div class="mda-form-control">
+                        <input asp-for="Password" class="form-control" />
+                        <div class="mda-form-control-line"></div>
+                        <label asp-for="Password"></label>
+                    </div><span class="mda-input-group-addon"><em class="ion-ios-locked-outline icon-lg"></em></span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-flat">Authenticate</button>
+        </form>
+        <div class="text-center text-sm"><a href="@Url.Action("Recover", "User")" class="text-inherit">Forgot password?</a></div>
     </div>
 </div>
